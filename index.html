@@ -1,48 +1,56 @@
-<!DOCTYPE html>
+
 <html lang="en" >
 
-<head>
-  <meta charset="UTF-8">
-  <title>8.4 Rock Paper Scissors</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>8.4 Rock Paper Scissors</title>
+    
+    <link rel="stylesheet" href="css/style.css">
   
+    
+  </head>
   
+  <body>
   
-      <link rel="stylesheet" href="css/style.css">
-
-  
-</head>
-
-<body>
-
-  <div id="play" class="container">
-  <div class= "box" id="rounds">
-  </div> 
-  <button class="box" id="newGame">
-    <p>NEW GAME</p>
-  </button> 
-  <button class="box" id="box1">
-    <p>PAPER</p>
-  </button>
-  <button class="box" id="box2">
-    <p>SCISSORS</p>
-  </button>
-   <button class="box" id="box3">
-    <p>ROCK</p>
-  </button>
-</div>
-  <div class= "box" id="output">
+    <div id="play" class="container">
+    <div class= "box" id="rounds">
+    </div> 
+    <button class="box" id="newGame">
+      <p>NEW GAME</p>
+    </button> 
+    <button class="player-move" id="box1" data-move="paper">
+      <p>PAPER</p>
+    </button>
+    <button class="player-move" id="box2" data-move="scissors">
+      <p>SCISSORS</p>
+    </button>
+     <button class="player-move" id="box3" data-move="rock">
+      <p>ROCK</p>
+    </button>
   </div>
- <div class= "box" id="result">
+    <div class= "box" id="output">
+    </div>
+   <div class= "box" id="result">
+    </div>
   </div>
-</div>
+  <div class="overlay" id="modal-overlay">
+    <div class="modal">
+      <a href="#" class="close">x</a>
+      <header>GAME OVER</header>
+      <div class="content">
+        <p></p>
+      </div>
+    </div>
+  </div>
+    
+    
+  
+      <script  src="js/index.js"></script>
   
   
-
-    <script  src="js/index.js"></script>
-
-
-
-
-</body>
-
-</html>
+  
+  
+  </body>
+  
+  </html>
+  

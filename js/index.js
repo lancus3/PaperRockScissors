@@ -3,9 +3,10 @@ var pickPaper = document.getElementById("box1");
 var pickScissors = document.getElementById("box2");
 var pickRock = document.getElementById("box3");
 var newGame = document.getElementById("newGame");
-var rounds = 0 ;
-var userScore = 0;
-var computerScore = 0;
+var params = {rounds: 0,
+              userScore: 0,
+              computerScore: 0};
+
 var log = function(text) {
   document.getElementById("output").innerHTML = text;
 };
@@ -13,41 +14,69 @@ var computerMove = function() {
   var computerNumber = Math.floor(Math.random() * 3) + 1;
   return computerNumber;
 };
+var buttons = document.querySelectorAll(".player-move");
 
-pickPaper.addEventListener("click", function() {
-  playerMove("paper");
-});
-pickScissors.addEventListener("click", function() {
-  playerMove("scissors");
-});
-pickRock.addEventListener("click", function() {
-  playerMove("rock");
-});
+for (var i = 0; i < buttons.length; i++){
+      var btnClass = buttons[i].getAttribute("data-move");
+      buttons[i].addEventListener("click",function(){
+        playerMove(btnClass);
+      }
+)};
+
 
 var scoreTable = function() {
   document.getElementById("result").innerHTML =
-    "Result You: " + userScore + " Computer: " + computerScore + "<br>";
+    "Result You: " + params.userScore + " Computer: " + params.computerScore + "<br>";
 };
 pickPaper.disabled = true;
 pickScissors.disabled = true;
 pickRock.disabled = true;
  
 newGame.addEventListener("click", function() {
-  rounds = parseInt(window.prompt("Wpisz liczbę rund"),10);
-  document.getElementById("rounds").innerHTML = "Liczba rund: " + rounds;
-  var userScore = 0;
-  var computerScore = 0;
-  if (rounds != 0 && rounds != null) {
+  params.rounds = parseInt(window.prompt("Wpisz liczbę rund"),10);
+  document.getElementById("rounds").innerHTML = "Liczba rund: " + params.rounds;
+  params.userScore = 0;
+  params.computerScore = 0;
+  if (params.rounds != 0 && params.rounds != null) {
   pickPaper.disabled = false;
   pickScissors.disabled = false;
   pickRock.disabled = false;
   scoreTable();
   log("Choose Paper, Scissors or Rock")
   }
-  else if (rounds === 0 || rounds == null) {
+  else if (params.rounds === 0 || params.rounds == null) {
     log("Kliknij NEW GAME i wpisz liczbę rund")
   }
 });
+var showModal = function(){
+		document.querySelector('#modal-overlay').classList.add('show');
+  document.querySelector(".content").innerHTML = " Computer: " + params.computerScore + " You: " + params.userScore;
+	};
+  
+  var modalLinks = document.querySelectorAll('.show-modal');
+
+	var hideModal = function(event){
+		event.preventDefault();
+		document.querySelector('#modal-overlay').classList.remove('show');
+	};
+	
+	var closeButtons = document.querySelectorAll('.modal .close');
+	
+	for(var i = 0; i < closeButtons.length; i++){
+		closeButtons[i].addEventListener('click', hideModal);
+	}
+	
+	
+	document.querySelector('#modal-overlay').addEventListener('click', hideModal);
+	
+	
+	var modals = document.querySelectorAll('.modal');
+	
+	for(var i = 0; i < modals.length; i++){
+		modals[i].addEventListener('click', function(event){
+			event.stopPropagation();
+    }
+	)};
 
 var playerMove = function(move) {
   var computer = computerMove();
@@ -62,23 +91,35 @@ var playerMove = function(move) {
     (move === "scissors" && computer === 3) ||
     (move === "rock" && computer === 1)
   ) {
-    computerScore++;
+    params.computerScore++;
     log("Computer WIN");
   } else {
-    userScore++;
+    params.userScore++;
     log("You WIN");
   }
 scoreTable();
  
-  if (computerScore === rounds || userScore === rounds || rounds === 0 ) {
+  if (params.computerScore === params.rounds ||  params.rounds === 0 ) {
+
   pickPaper.disabled = true;
   pickScissors.disabled = true;
   pickRock.disabled = true;
-  document.getElementById("output").innerHTML += " ENTIRE GAME" +"<br> GAME OVER PLEASE PRESS NEW GAME BUTON";
+  showModal();
+  document.querySelector(".content").innerHTML += " <br>GAME OVER! COMPUTER WIN ENTIRE GAME" + "<br>  PLEASE PRESS NEW GAME BUTTON";
     
-  userScore = 0;
-  computerScore = 0;
-  
-  
- }
+  params.userScore = 0;
+  params.computerScore = 0;
+  }   
+  else if (params.userScore === params.rounds || params.rounds === 0) { pickPaper.disabled = true;
+  pickScissors.disabled = true;
+  pickRock.disabled = true;
+  showModal();
+  document.querySelector(".content").innerHTML += "<br> <br>GAME OVER! CONGRATULATIONS! YOU WIN ENTIRE GAME" + "<br>  PLEASE PRESS NEW GAME BUTTON";
+    
+  params.userScore = 0;
+  params.computerScore = 0;
+    
+    
+  }
+
 };
