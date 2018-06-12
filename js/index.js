@@ -15,8 +15,8 @@ var computerMap = {
   2: "scissors",
   3: "rock"
 }
-var TableTitle = ["round","Player Move","Computer Move","Score","Score After Round"];
- 
+
+
 
 
 var log = function (text) {
@@ -74,7 +74,7 @@ function tableCreate() {
   for (var j = 0; j < params.progress.length; j++) {
     var row = document.createElement("tr");
     var paraProgress = params.progress[j];
-    
+
     for (var key in paraProgress) {
       var cell = document.createElement("td");
       var cellText = document.createTextNode(paraProgress[key]);
@@ -83,15 +83,13 @@ function tableCreate() {
       row.appendChild(cell);
     }
 
-    //row added to end of table body
     tblBody.appendChild(row);
   }
 
-  // append the <tbody> inside the <table>
   tbl.appendChild(tblBody);
-  // put <table> in the <body>
+
   modalTable.appendChild(tbl);
-  // tbl border attribute to 
+
   tbl.setAttribute("border", "2");
 }
 
