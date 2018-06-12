@@ -1,17 +1,67 @@
-box { text-align: center; }
+.player-move {
+  text-align: center;
+  width: 100px;
+  height: 40px;
+}
 
-#output { min-width: 100px; text-align: center; }
+#output {
+  min-width: 100px;
+  text-align: center;
+}
 
-.container { min-width: 900px; margin: 0 auto; }
+.container {
+  min-width: 900px;
+  margin: 0 auto;
+}
 
-.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); }
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
 
-.overlay.show { display: block; }
+.overlay.show {
+  display: block;
+}
 
-.modal { background: #fff; width: 200px; position: absolute; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0); }
+.table {
+  margin: 0 auto;
+}
 
-.modal .close { position: absolute; right: 0; top: 0; padding: 5px; color: #000; text-decoration: none; }
+.modal {
+  background: #fff;
+  max-width: 220px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
 
-.modal header { font-size: 20px; line-height: 30px; min-height: 30px; font-weight: bold; padding: 0 30px; }
+.modal .close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px;
+  color: #000;
+  text-decoration: none;
+}
 
-.modal .content { min-height: 30px; padding: 5px 30px; text-align: center; }
+.modal header {
+  font-size: 20px;
+  line-height: 30px;
+  min-height: 30px;
+  font-weight: bold;
+  padding: 0 30px;
+}
+
+.modal .content {
+  min-height: 30px;
+  padding: 5px 30px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */
